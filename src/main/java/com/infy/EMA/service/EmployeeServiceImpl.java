@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.infy.EMA.EmployeeException.EmployeeException;
 import com.infy.EMA.dto.EmployeeDTO;
-import com.infy.EMA.dto.EmployeePerformanceDTO;
 import com.infy.EMA.entity.Employee;
 import com.infy.EMA.repository.EmployeeRepository;
 
@@ -52,34 +51,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return id;
 		
 	}
-	public EmployeeDTO updateEmployeeSalary(String employeeBandLevel) {
-		if(employeeBandLevel.equals("A")) {
-		Employee A=er.findByEmployeeBandLevel("A");
-		A.setEmployeeSalary(A.getEmployeeSalary()*1.15);
-		}
-		else if(employeeBandLevel.equals("B")) {
-		Employee B=er.findByEmployeeBandLevel("B");
-		B.setEmployeeSalary(B.getEmployeeSalary()*1.1);
-		}
-		else if(employeeBandLevel.equals("C")) {
-		Employee C=er.findByEmployeeBandLevel("C");
-		C.setEmployeeSalary(C.getEmployeeSalary()*1.05);
-		}
-		
-		
-		Employee e=er.findByEmployeeBandLevel(employeeBandLevel);
-		EmployeeDTO ed=Employee.prepareEmployeeDTO(e);
-		
-		return ed;
-	}
 
 	@Override
-	public EmployeePerformanceDTO getEmployeePerformance(Integer empId){
-		Optional<Employee> o=er.findById(empId);
-		Employee e=o.get();
-		EmployeeDTO ed=Employee.prepareEmployeeDTO(e);
-		EmployeePerformanceDTO edto=new RestTemplate().getForObject("http://localhost:8083/employeeperformance/"+empId, EmployeePerformanceDTO.class);
-		return edto;
+	public void deleteEmployee(Integer empId) {
+		// TODO Auto-generated method stub
+		er.deleteById(empId);		
 	}
 	
 

@@ -8,6 +8,5 @@ import com.infy.EMA.entity.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
 	public List<Employee> findByAddress(String Address);
-	public Employee findByEmployeeBandLevel(String employeeBandLevel);
 
 }
