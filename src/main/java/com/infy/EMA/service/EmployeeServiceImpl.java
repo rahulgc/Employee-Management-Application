@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.infy.EMA.EmployeeException.EmployeeException;
+import com.infy.EMA.dto.AddressDTO;
 import com.infy.EMA.dto.EmployeeDTO;
 import com.infy.EMA.entity.Employee;
 import com.infy.EMA.repository.EmployeeRepository;
@@ -56,6 +57,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void deleteEmployee(Integer empId) {
 		// TODO Auto-generated method stub
 		er.deleteById(empId);		
+	}
+
+	@Override
+	public EmployeeDTO updateEmployee(EmployeeDTO ed) {
+		// TODO Auto-generated method stub
+		Optional<Employee> o=er.findById(ed.getEmpId());
+		Employee e=o.get();
+		e.setEmployeeContactNumber(ed.getEmployeeContactNumber());
+		e.setEmpName(ed.getEmpName());
+		e.setAddress(AddressDTO.prepareAddress(ed.getAddress()));
+		er.save(e);
+		ed=Employee.prepareEmployeeDTO(e);
+		
+		return ed;
 	}
 	
 

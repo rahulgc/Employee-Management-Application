@@ -12,4 +12,5 @@ public interface EmployeeService {
 	public EmployeeDTO getEmployee(Integer empId);
 	public List<EmployeeDTO> getAllEmployee();
 	public void deleteEmployee(Integer empId);
+	public EmployeeDTO updateEmployee(EmployeeDTO ed);
 }

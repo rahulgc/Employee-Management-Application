@@ -50,5 +50,11 @@ public class EmployeeController {
 		return new ResponseEntity<>(msg,HttpStatus.OK);
 		
 	}
+	@PutMapping("/update")
+	public ResponseEntity<EmployeeDTO> updateEmployee(@RequestBody EmployeeDTO employeeDTO){
+		EmployeeDTO ed =service.updateEmployee(employeeDTO);
+		return new ResponseEntity<>(ed, HttpStatus.OK);
+		
+	}
 	
 }
