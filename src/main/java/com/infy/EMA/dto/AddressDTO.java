@@ -2,7 +2,8 @@ package com.infy.EMA.dto;
 
 import com.infy.EMA.entity.Address;
 
-public class AddressDTO {
+public class AddressDTO
+ {
 	private int addressId;
 	private String city;
 	private String pincode;

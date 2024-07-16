@@ -26,6 +26,7 @@ import com.infy.EMA.service.EmployeeService;
 public class EmployeeController {
 	@Autowired
 	private EmployeeService service;
+	
 	@GetMapping("/get/{id}")
 	public ResponseEntity<EmployeeDTO> getEmployee(@PathVariable Integer id) throws EmployeeException{
 		EmployeeDTO e=service.getEmployee(id);
